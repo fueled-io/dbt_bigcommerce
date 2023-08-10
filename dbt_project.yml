@@ -41,3 +41,4 @@ models:
 
 vars:
   bc_schema: "bigcommerce" # Set to the BigQuery dataset connected to your BigCommerce store.
+  bc_order_success_codes: [2, 3, 9, 10, 11] # Override which order status codes constitute successful orders that should be considered revenue in rollups.
