@@ -34,7 +34,6 @@ models:
     base:
       +schema: base
       +tags: base
-      +materialized: view
     intermediate:
       +schema: "int"
       +materialized: view

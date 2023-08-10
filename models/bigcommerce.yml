@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: bigcommerce__customers
+    description: ""
+  - name: bigcommerce_order_line_items
+    description: ""
+  - name: bigcommerce__orders
+    description: ""
+  - name: bigcommerce_orders
+    description: ""

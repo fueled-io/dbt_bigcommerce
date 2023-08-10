@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_products
+    description: ""
+  - name: int_customers
+    description: ""
+  - name: int_orders
+    description: ""
+  - name: int_order_line_items
+    description: ""

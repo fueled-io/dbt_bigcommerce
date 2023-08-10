@@ -27,3 +27,36 @@ it can simply be modified to meet your organizations needs.
 
 This package was originally built at part of a BigCommerce Hackaton, in August 2023. It was initially
 launched with the support of Scott Williams and Human Design, Fueled's partners in this Hackaton.
+
+## To Dos 
+
+#### Decisions
+
+* [ ] Should rollups be based on total_order_value or subtotal_value of orders? Should that be a configuration?
+
+#### Documentation
+
+* [ ] Document source tables and columns in /models/base/source.yml
+* [ ] Document intermediate views in /models/intermediate/intermediate.yml
+* [ ] Document finalized views in /models/bigcommerce.yml
+
+#### Customer Flattening & Rollups
+
+* [x] Add days_between_first_last to int_customers.sql
+* [x] Add order_frequency to int_customers.sql
+* [ ] Add discount_usage_count to int_customers.sql
+* [ ] Add discount_usage_amount to int_customers.sql
+* [ ] Add most recent billing & shipping address information to int_customers.sql
+
+#### Order Flattening & Rollups
+
+* [ ] Add order_position as a calculation of the number of a specific order for all orders associated with a specific customer
+* [ ] Add total order count for the specific customer to each order
+* [ ] Add the customer's CLTV to each order record
+* [ ] Add date of the customer's first order to each order record
+* [ ] Add days since first order to each order record
+* [ ] Add days since most recent previous order to each order record
+
+#### Order Line Item Flattening & Rollups
+
+* For this table, we need to think a bit more, but we could use it as the basis for ML on what products are purchased together frequently.
