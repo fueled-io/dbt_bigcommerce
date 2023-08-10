@@ -43,6 +43,8 @@ first_order AS (
             ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY order_created_date_time) AS rn
         FROM
             {{ source(var('bc_schema', 'bigcommerce'), 'bc_order') }}
+        WHERE
+            order_status_id IN ({{ var('bc_order_success_codes') | join(", ") }}) -- Replace with your array of order status codes
     )
     SELECT
         customer_id,
@@ -63,6 +65,9 @@ most_recent_order AS (
             ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY order_created_date_time DESC) AS rn
         FROM
             {{ source(var('bc_schema', 'bigcommerce'), 'bc_order') }}
+        WHERE
+            order_status_id IN ({{ var('bc_order_success_codes') | join(", ") }}) -- Replace with your array of order status codes
+
     )
     SELECT
         customer_id,
