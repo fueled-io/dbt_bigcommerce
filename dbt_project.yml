@@ -27,16 +27,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
-#models:
-#  bigcommerce:
-#    +schema: bigcommerce
-#    +materialized: view
-#    base:
-#      +schema: base
-#      +tags: base
-#    intermediate:
-#      +schema: "int"
-#      +materialized: view
+models:
+  bigcommerce:
+    +schema: bigcommerce
+    +materialized: view
+    base:
+      +schema: base
+      +tags: base
+    intermediate:
+      +schema: "int"
+      +materialized: view
 
 vars:
   bc_schema: "bigcommerce" # Set to the BigQuery dataset connected to your BigCommerce store.
