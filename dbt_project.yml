@@ -1,8 +1,4 @@
-
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'my_new_project'
+name: 'dbt_bigcommerce'
 version: '1.0.0'
 config-version: 2
 
@@ -32,7 +28,17 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
-      materialized: view
+  bigcommerce:
+    +schema: bigcommerce
+    +materialized: view
+    base:
+      +schema: base
+      +tags: base
+      +materialized: view
+    intermediate:
+      +schema: "int"
+      +materialized: view
+
+vars:
+  bc_schema: "bigcommerce" # Set to the BigQuery dataset connected to your BigCommerce store.
+  bc_order_success_codes: [2, 3, 9, 10, 11] # Override which order status codes constitute successful orders that should be considered revenue in rollups.
