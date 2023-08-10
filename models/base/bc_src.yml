@@ -1,0 +1,625 @@
+version: 2
+
+sources:
+  - name: bigcommerce
+    schema: "{{ var('bc_schema', 'bigcommerce') }}"
+    tables:
+      - name: bc_customer
+        columns:
+          - name: customer_id
+            data_type: INT64
+          - name: full_name
+            data_type: STRING
+          - name: first_name
+            data_type: STRING
+          - name: last_name
+            data_type: STRING
+          - name: company
+            data_type: STRING
+          - name: email
+            data_type: STRING
+          - name: phone
+            data_type: STRING
+          - name: notes
+            data_type: STRING
+          - name: accepts_product_review_abandoned_cart_emails
+            data_type: BOOLEAN
+          - name: date_created
+            data_type: DATETIME
+          - name: date_modified
+            data_type: DATETIME
+          - name: tax_exempt_category
+            data_type: STRING
+          - name: registration_ip_address
+            data_type: STRING
+          - name: store_credit_amount
+            data_type: NUMERIC
+          - name: store_credit_currency
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+          - name: store_credit_in_usd
+            data_type: NUMERIC
+
+      - name: bc_customer_addresses
+        columns:
+          - name: customer_id
+            data_type: INT64
+          - name: customer_address_id
+            data_type: INT64
+          - name: full_name
+            data_type: STRING
+          - name: first_name
+            data_type: STRING
+          - name: last_name
+            data_type: STRING
+          - name: company
+            data_type: STRING
+          - name: address_line_1
+            data_type: STRING
+          - name: address_line_2
+            data_type: STRING
+          - name: city
+            data_type: STRING
+          - name: state
+            data_type: STRING
+          - name: postal_code
+            data_type: STRING
+          - name: country_code
+            data_type: STRING
+          - name: address_type
+            data_type: STRING
+          - name: phone
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_customer_custom_fields
+        columns:
+          - name: customer_id
+            data_type: INT64
+          - name: custom_field_id
+            data_type: INT64
+          - name: custom_field_type
+            data_type: STRING
+          - name: custom_field_name
+            data_type: STRING
+          - name: custom_field_value
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_order
+        columns:
+          - name: order_id
+            data_type: INT64
+          - name: order_status_id
+            data_type: INT64
+          - name: order_status
+            data_type: STRING
+          - name: order_archived
+            data_type: BOOLEAN
+          - name: order_created_date_time
+            data_type: DATETIME
+          - name: date_shipped
+            data_type: DATETIME
+          - name: order_source
+            data_type: STRING
+          - name: external_source
+            data_type: STRING
+          - name: external_id
+            data_type: STRING
+          - name: external_merchant_id
+            data_type: STRING
+          - name: channel_id
+            data_type: INT64
+          - name: customer_id
+            data_type: INT64
+          - name: cart_id
+            data_type: STRING
+          - name: payment_status
+            data_type: STRING
+          - name: payment_provider_id
+            data_type: STRING
+          - name: payment_method_type
+            data_type: STRING
+          - name: credit_card_type
+            data_type: STRING
+          - name: total_items
+            data_type: INT64
+          - name: total_items_shipped
+            data_type: INT64
+          - name: coupon_id
+            data_type: INT64
+          - name: coupon_code
+            data_type: STRING
+          - name: coupon_discount
+            data_type: NUMERIC
+          - name: gift_certificate_amount_redeemed
+            data_type: NUMERIC
+          - name: store_credit_redeemed
+            data_type: NUMERIC
+          - name: sub_total_excluding_tax
+            data_type: NUMERIC
+          - name: sub_total_including_tax
+            data_type: NUMERIC
+          - name: sub_total_tax
+            data_type: NUMERIC
+          - name: base_shipping_cost
+            data_type: NUMERIC
+          - name: shipping_excluding_tax
+            data_type: NUMERIC
+          - name: shipping_including_tax
+            data_type: NUMERIC
+          - name: shipping_tax
+            data_type: NUMERIC
+          - name: base_handling_cost
+            data_type: NUMERIC
+          - name: handling_excluding_tax
+            data_type: NUMERIC
+          - name: handling_including_tax
+            data_type: NUMERIC
+          - name: handling_tax
+            data_type: NUMERIC
+          - name: base_wrapping_cost
+            data_type: NUMERIC
+          - name: wrapping_excluding_tax
+            data_type: NUMERIC
+          - name: wrapping_including_tax
+            data_type: NUMERIC
+          - name: wrapping_tax
+            data_type: NUMERIC
+          - name: total_tax
+            data_type: NUMERIC
+          - name: total_excluding_tax
+            data_type: NUMERIC
+          - name: total_including_tax
+            data_type: NUMERIC
+          - name: default_currency_code
+            data_type: STRING
+          - name: currency_exchange_rate
+            data_type: NUMERIC
+          - name: staff_notes
+            data_type: STRING
+          - name: customer_message
+            data_type: STRING
+          - name: refund_amount
+            data_type: NUMERIC
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_order_billing_addresses
+        columns:
+          - name: order_id
+            data_type: INT64
+          - name: full_name
+            data_type: STRING
+          - name: first_name
+            data_type: STRING
+          - name: last_name
+            data_type: STRING
+          - name: company
+            data_type: STRING
+          - name: street_1
+            data_type: STRING
+          - name: street_2
+            data_type: STRING
+          - name: city
+            data_type: STRING
+          - name: state
+            data_type: STRING
+          - name: zip
+            data_type: STRING
+          - name: country
+            data_type: STRING
+          - name: country_code
+            data_type: STRING
+          - name: phone
+            data_type: STRING
+          - name: email
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_order_line_items
+        columns:
+          - name: order_line_item_id
+            data_type: INT64
+          - name: order_id
+            data_type: INT64
+          - name: order_address_id
+            data_type: INT64
+          - name: product_id
+            data_type: INT64
+          - name: external_id
+            data_type: STRING
+          - name: quantity
+            data_type: INT64
+          - name: product_price
+            data_type: NUMERIC
+          - name: base_cost_price
+            data_type: NUMERIC
+          - name: product_price_after_discount
+            data_type: NUMERIC
+          - name: price_ex_tax
+            data_type: NUMERIC
+          - name: price_inc_tax
+            data_type: NUMERIC
+          - name: price_tax
+            data_type: NUMERIC
+          - name: base_total
+            data_type: NUMERIC
+          - name: product_total_cost
+            data_type: NUMERIC
+          - name: total_ex_tax
+            data_type: NUMERIC
+          - name: total_inc_tax
+            data_type: NUMERIC
+          - name: total_tax
+            data_type: NUMERIC
+          - name: is_refunded
+            data_type: BOOLEAN
+          - name: refund_amount
+            data_type: NUMERIC
+          - name: return_id
+            data_type: INT64
+          - name: quantity_shipped
+            data_type: INT64
+          - name: fixed_shipping_cost
+            data_type: NUMERIC
+          - name: base_wrapping_cost
+            data_type: NUMERIC
+          - name: wrapping_cost_ex_tax
+            data_type: NUMERIC
+          - name: wrapping_cost_inc_tax
+            data_type: NUMERIC
+          - name: wrapping_cost_tax
+            data_type: NUMERIC
+          - name: variant_id
+            data_type: INT64
+          - name: option_set_id
+            data_type: INT64
+          - name: parent_order_product_id
+            data_type: INT64
+          - name: is_bundled_product
+            data_type: BOOLEAN
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_order_line_items_discounts
+        columns:
+          - name: order_line_item_id
+            data_type: INT64
+          - name: order_id
+            data_type: INT64
+          - name: discount_id
+            data_type: STRING
+          - name: discount_amount
+            data_type: NUMERIC
+          - name: discount_name
+            data_type: STRING
+          - name: discount_code
+            data_type: STRING
+          - name: discount_level
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_order_shipping_addresses
+        columns:
+          - name: order_id
+            data_type: INT64
+          - name: shipping_address_id
+            data_type: INT64
+          - name: shipping_method
+            data_type: STRING
+          - name: full_name
+            data_type: STRING
+          - name: first_name
+            data_type: STRING
+          - name: last_name
+            data_type: STRING
+          - name: company
+            data_type: STRING
+          - name: street_1
+            data_type: STRING
+          - name: street_2
+            data_type: STRING
+          - name: city
+            data_type: STRING
+          - name: state
+            data_type: STRING
+          - name: postal_code
+            data_type: STRING
+          - name: country
+            data_type: STRING
+          - name: country_code
+            data_type: STRING
+          - name: phone
+            data_type: STRING
+          - name: email
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_product
+        columns:
+          - name: product_id
+            data_type: INT64
+          - name: product_name
+            data_type: STRING
+          - name: product_type
+            data_type: STRING
+          - name: sku
+            data_type: STRING
+          - name: bin_picking_number
+            data_type: STRING
+          - name: universal_product_code
+            data_type: STRING
+          - name: global_trade_item_number
+            data_type: STRING
+          - name: manufacturer_part_number
+            data_type: STRING
+          - name: date_created
+            data_type: DATETIME
+          - name: date_modified
+            data_type: DATETIME
+          - name: brand_id
+            data_type: INT64
+          - name: brand_name
+            data_type: STRING
+          - name: page_title
+            data_type: STRING
+          - name: custom_url
+            data_type: STRING
+          - name: description
+            data_type: STRING
+          - name: is_featured
+            data_type: BOOLEAN
+          - name: condition
+            data_type: STRING
+          - name: sort_order
+            data_type: INT64
+          - name: preorder_release_date
+            data_type: STRING
+          - name: preorder_message
+            data_type: STRING
+          - name: availability
+            data_type: STRING
+          - name: availability_description
+            data_type: STRING
+          - name: weight
+            data_type: NUMERIC
+          - name: width
+            data_type: NUMERIC
+          - name: depth
+            data_type: NUMERIC
+          - name: height
+            data_type: NUMERIC
+          - name: price
+            data_type: NUMERIC
+          - name: cost_price
+            data_type: NUMERIC
+          - name: retail_price
+            data_type: NUMERIC
+          - name: sale_price
+            data_type: NUMERIC
+          - name: fixed_cost_shipping_price
+            data_type: NUMERIC
+          - name: is_free_shipping
+            data_type: BOOLEAN
+          - name: is_preorder_only
+            data_type: BOOLEAN
+          - name: is_price_hidden
+            data_type: BOOLEAN
+          - name: price_hidden_label
+            data_type: STRING
+          - name: order_quantity_minimum
+            data_type: INT64
+          - name: order_quantity_maximum
+            data_type: INT64
+          - name: gift_wrapping_options_type
+            data_type: STRING
+          - name: tax_class_id
+            data_type: INT64
+          - name: product_tax_code
+            data_type: STRING
+          - name: inventory_level
+            data_type: INT64
+          - name: inventory_warning_level
+            data_type: INT64
+          - name: open_graph_type
+            data_type: STRING
+          - name: open_graph_title
+            data_type: STRING
+          - name: open_graph_use_product_name
+            data_type: BOOLEAN
+          - name: base_variant_id
+            data_type: INT64
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_product_category
+        columns:
+          - name: product_id
+            data_type: INT64
+          - name: category_id
+            data_type: INT64
+          - name: category_name
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_product_custom_fields
+        columns:
+          - name: product_id
+            data_type: INT64
+          - name: custom_field_id
+            data_type: INT64
+          - name: custom_field_name
+            data_type: STRING
+          - name: custom_field_value
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_product_variants
+        columns:
+          - name: product_id
+            data_type: INT64
+          - name: variants_id
+            data_type: INT64
+          - name: variants_sku
+            data_type: STRING
+          - name: variants_sku_id
+            data_type: INT64
+          - name: variants_cost_price
+            data_type: NUMERIC
+          - name: variants_price
+            data_type: NUMERIC
+          - name: variants_sale_price
+            data_type: NUMERIC
+          - name: variants_retail_price
+            data_type: NUMERIC
+          - name: variants_weight
+            data_type: NUMERIC
+          - name: variants_width
+            data_type: NUMERIC
+          - name: variants_height
+            data_type: NUMERIC
+          - name: variants_depth
+            data_type: NUMERIC
+          - name: variants_is_free_shipping
+            data_type: BOOLEAN
+          - name: variants_fixed_cost_shipping_price
+            data_type: NUMERIC
+          - name: variants_purchasing_disabled
+            data_type: BOOLEAN
+          - name: variants_purchasing_disabled_message
+            data_type: STRING
+          - name: variants_upc
+            data_type: STRING
+          - name: variants_inventory_level
+            data_type: INT64
+          - name: variants_inventory_warning_level
+            data_type: INT64
+          - name: variants_bin_picking_number
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_refund
+        columns:
+          - name: refund_id
+            data_type: INT64
+          - name: order_id
+            data_type: INT64
+          - name: user_id
+            data_type: STRING
+          - name: refund_created_date_time
+            data_type: DATETIME
+          - name: refund_reason
+            data_type: STRING
+          - name: refund_total_amount
+            data_type: NUMERIC
+          - name: refund_total_tax
+            data_type: NUMERIC
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_refund_line_items
+        columns:
+          - name: refund_id
+            data_type: INT64
+          - name: order_id
+            data_type: INT64
+          - name: order_line_item_item_id
+            data_type: INT64
+          - name: item_type
+            data_type: STRING
+          - name: refund_reason
+            data_type: STRING
+          - name: quantity
+            data_type: NUMERIC
+          - name: requested_amount
+            data_type: NUMERIC
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_refund_payments
+        columns:
+          - name: refund_id
+            data_type: INT64
+          - name: payment_id
+            data_type: INT64
+          - name: payment_provider_id
+            data_type: STRING
+          - name: amount
+            data_type: NUMERIC
+          - name: is_offline
+            data_type: BOOLEAN
+          - name: is_declined
+            data_type: BOOLEAN
+          - name: payment_declined_message
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
+
+      - name: bc_store_channel
+        columns:
+          - name: channel_id
+            data_type: INT64
+          - name: channel_name
+            data_type: STRING
+          - name: channel_status
+            data_type: STRING
+          - name: channel_type
+            data_type: STRING
+          - name: channel_platform
+            data_type: STRING
+          - name: channel_external_id
+            data_type: STRING
+          - name: channel_site_url
+            data_type: STRING
+          - name: channel_icon_url
+            data_type: STRING
+          - name: channel_is_listable_from_ui
+            data_type: BOOLEAN
+          - name: channel_is_visible
+            data_type: BOOLEAN
+          - name: channel_date_created
+            data_type: DATETIME
+          - name: channel_date_modified
+            data_type: DATETIME
+          - name: store_id
+            data_type: INT64
+          - name: store_hash
+            data_type: STRING
+          - name: store_domain
+            data_type: STRING
+          - name: store_name
+            data_type: STRING
+          - name: store_default_site_id
+            data_type: INT64
+          - name: store_default_channel_id
+            data_type: INT64
+          - name: store_first_name
+            data_type: STRING
+          - name: store_last_name
+            data_type: STRING
+          - name: store_secure_url
+            data_type: STRING
+          - name: store_control_panel_base_url
+            data_type: STRING
+          - name: store_status
+            data_type: STRING
+          - name: store_country
+            data_type: STRING
+          - name: store_country_code
+            data_type: STRING
+          - name: store_phone
+            data_type: STRING
+          - name: store_language
+            data_type: STRING
+          - name: last_updated_datetime
+            data_type: DATETIME
