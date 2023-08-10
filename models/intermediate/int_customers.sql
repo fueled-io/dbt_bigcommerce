@@ -127,4 +127,3 @@ LEFT JOIN
     most_recent_order mro ON mro.customer_id = o.customer_id
 LEFT JOIN
     discount_usage du ON du.customer_id = o.customer_id
-ORDER BY du.number_of_discounted_orders
