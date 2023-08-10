@@ -3,9 +3,339 @@ version: 2
 models:
   - name: bigcommerce__customers
     description: ""
-  - name: bigcommerce_order_line_items
-    description: ""
+    columns:
+      - name: customer_id
+        description: "The customer's BigCommerce Customer ID"
+
+      - name: full_name
+        description: "The customer's full name"
+
+      - name: first_name
+        description: "The customer's first name"
+
+      - name: last_name
+        description: "The customer's last name"
+
+      - name: company
+        description: "The customer's company (if applicable)"
+
+      - name: email
+        description: "The customer's primary email address"
+
+      - name: phone
+        description: "The customer's primary phone number"
+
+      - name: notes
+        description: "Notes related to the customer"
+
+      - name: accepts_transactional
+        description: "True/false - Does this customer accept transactional email from BigCommerce"
+
+      - name: registration_ip_address
+        description: "The IP address logged when the customer account was created"
+
+      - name: date_created
+        description: "The date the customer account was created"
+
+      - name: date_modified
+        description: "The most recent date that the customer account was modified"
+
+      - name: store_credit_in_usd
+        description: "Available store credit on file for this customer currently"
+
+      - name: order_count
+        description: "The total number of orders placed by the customer"
+
+      - name: cltv
+        description: "The customer's lifetime value"
+
+      - name: first_order_id
+        description: "The order ID for the first order the customer placed on the store"
+
+      - name: first_order_date
+        description: "The order date for the first order the customer placed on the store"
+
+      - name: first_order_total
+        description: "The order total for the first order the customer placed on the store"
+
+      - name: first_order_billing_city
+        description: "The billing city for the first order the customer placed on the store"
+
+      - name: first_order_billing_state
+        description: "The billing state for the first order the customer placed on the store"
+
+      - name: first_order_billing_country
+        description: "The billing country for the first order the customer placed on the store"
+
+      - name: most_recent_order_id
+        description: "The order ID for the most recent order the customer placed on the store"
+
+      - name: most_recent_order_date
+        description: "The order date for the most recent order the customer placed on the store"
+
+      - name: most_recent_order_total
+        description: "The order total for the most recent order the customer placed on the store"
+
+      - name: most_recent_order_billing_city
+        description: "The billing city for the most recent order the customer placed on the store"
+
+      - name: most_recent_order_billing_state
+        description: "The billing state for the most recent order the customer placed on the store"
+
+      - name: most_recent_order_billing_country
+        description: "The billing country for the most recent order the customer placed on the store"
+
+      - name: days_between_first_last_order
+        description: "The number of days between the customer's first and most recent order"
+
+      - name: order_frequency_days
+        description: "The average number of days between orders for the customer"
+
+      - name: number_of_discounted_orders
+        description: "The number of orders for this customer that include discounts"
+
+      - name: total_discounts_value
+        description: "The total value of all discounts on orders placed by this customer"
+
   - name: bigcommerce__orders
     description: ""
-  - name: bigcommerce_orders
+    columns:
+      - name: order_id
+        description: ""
+
+      - name: order_status_id
+        description: ""
+
+      - name: order_status
+        description: ""
+
+      - name: order_archived
+        description: ""
+
+      - name: order_created_date_time
+        description: ""
+
+      - name: date_shipped
+        description: ""
+
+      - name: order_source
+        description: ""
+
+      - name: external_source
+        description: ""
+
+      - name: external_id
+        description: ""
+
+      - name: external_merchant_id
+        description: ""
+
+      - name: channel_id
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: cart_id
+        description: ""
+
+      - name: payment_status
+        description: ""
+
+      - name: payment_provider_id
+        description: ""
+
+      - name: payment_method_type
+        description: ""
+
+      - name: credit_card_type
+        description: ""
+
+      - name: total_items
+        description: ""
+
+      - name: total_items_shipped
+        description: ""
+
+      - name: coupon_id
+        description: ""
+
+      - name: coupon_code
+        description: ""
+
+      - name: coupon_discount
+        description: ""
+
+      - name: gift_certificate_amount_redeemed
+        description: ""
+
+      - name: store_credit_redeemed
+        description: ""
+
+      - name: sub_total_excluding_tax
+        description: ""
+
+      - name: sub_total_including_tax
+        description: ""
+
+      - name: sub_total_tax
+        description: ""
+
+      - name: base_shipping_cost
+        description: ""
+
+      - name: shipping_excluding_tax
+        description: ""
+
+      - name: shipping_including_tax
+        description: ""
+
+      - name: shipping_tax
+        description: ""
+
+      - name: base_handling_cost
+        description: ""
+
+      - name: handling_excluding_tax
+        description: ""
+
+      - name: handling_including_tax
+        description: ""
+
+      - name: handling_tax
+        description: ""
+
+      - name: base_wrapping_cost
+        description: ""
+
+      - name: wrapping_excluding_tax
+        description: ""
+
+      - name: wrapping_including_tax
+        description: ""
+
+      - name: wrapping_tax
+        description: ""
+
+      - name: total_tax
+        description: ""
+
+      - name: total_excluding_tax
+        description: ""
+
+      - name: total_including_tax
+        description: ""
+
+      - name: default_currency_code
+        description: ""
+
+      - name: currency_exchange_rate
+        description: ""
+
+      - name: staff_notes
+        description: ""
+
+      - name: customer_message
+        description: ""
+
+      - name: refund_amount
+        description: ""
+
+      - name: last_updated_datetime
+        description: ""
+
+  - name: bigcommerce__order_line_items
     description: ""
+    columns:
+      - name: order_line_item_id
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: order_address_id
+        description: ""
+
+      - name: product_id
+        description: ""
+
+      - name: external_id
+        description: ""
+
+      - name: quantity
+        description: ""
+
+      - name: product_price
+        description: ""
+
+      - name: base_cost_price
+        description: ""
+
+      - name: product_price_after_discount
+        description: ""
+
+      - name: price_ex_tax
+        description: ""
+
+      - name: price_inc_tax
+        description: ""
+
+      - name: price_tax
+        description: ""
+
+      - name: base_total
+        description: ""
+
+      - name: product_total_cost
+        description: ""
+
+      - name: total_ex_tax
+        description: ""
+
+      - name: total_inc_tax
+        description: ""
+
+      - name: total_tax
+        description: ""
+
+      - name: is_refunded
+        description: ""
+
+      - name: refund_amount
+        description: ""
+
+      - name: return_id
+        description: ""
+
+      - name: quantity_shipped
+        description: ""
+
+      - name: fixed_shipping_cost
+        description: ""
+
+      - name: base_wrapping_cost
+        description: ""
+
+      - name: wrapping_cost_ex_tax
+        description: ""
+
+      - name: wrapping_cost_inc_tax
+        description: ""
+
+      - name: wrapping_cost_tax
+        description: ""
+
+      - name: variant_id
+        description: ""
+
+      - name: option_set_id
+        description: ""
+
+      - name: parent_order_product_id
+        description: ""
+
+      - name: is_bundled_product
+        description: ""
+
+      - name: last_updated_datetime
+        description: ""

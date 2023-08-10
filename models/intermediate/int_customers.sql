@@ -58,6 +58,18 @@ first_order AS (
         rn = 1
 ),
 
+first_order_address AS (
+    SELECT
+        foa.order_id,
+        foa.city as first_order_billing_city,
+        foa.state as first_order_billing_state,
+        foa.country as first_order_billing_country
+    FROM
+        {{ source(var('bc_schema', 'bigcommerce'), 'bc_order_billing_addresses') }} foa
+    JOIN
+        first_order fo ON foa.order_id = fo.first_order_id
+),
+
 most_recent_order AS (
     WITH ranked_orders AS (
         SELECT
@@ -83,6 +95,18 @@ most_recent_order AS (
         rn = 1
 ),
 
+most_recent_order_address AS (
+    SELECT
+        mroa.order_id,
+        mroa.city as most_recent_order_billing_city,
+        mroa.state as most_recent_order_billing_state,
+        mroa.country as most_recent_order_billing_country
+    FROM
+        {{ source(var('bc_schema', 'bigcommerce'), 'bc_order_billing_addresses') }} mroa
+    JOIN
+        most_recent_order mro ON mroa.order_id = mro.most_recent_order_id
+),
+
 discount_usage as (
     SELECT 
         c.customer_id,
@@ -105,9 +129,15 @@ SELECT
     fo.first_order_id,
     fo.first_order_date,
     fo.first_order_total,
+    foa.first_order_billing_city,
+    foa.first_order_billing_state,
+    foa.first_order_billing_country,
     mro.most_recent_order_id,
     mro.most_recent_order_date,
     mro.most_recent_order_total,
+    mroa.most_recent_order_billing_city,
+    mroa.most_recent_order_billing_state,
+    mroa.most_recent_order_billing_country,
     date_diff(mro.most_recent_order_date, fo.first_order_date, DAY) as days_between_first_last_order,
     CASE
         WHEN o.order_count <= 1 THEN NULL
@@ -124,6 +154,10 @@ LEFT JOIN
 LEFT JOIN
     first_order fo ON c.customer_id = fo.customer_id
 LEFT JOIN
+    first_order_address foa ON foa.order_id = fo.first_order_id
+LEFT JOIN
     most_recent_order mro ON mro.customer_id = o.customer_id
+LEFT JOIN
+    most_recent_order_address mroa ON mroa.order_id = mro.most_recent_order_id
 LEFT JOIN
     discount_usage du ON du.customer_id = o.customer_id

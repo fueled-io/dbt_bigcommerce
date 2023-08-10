@@ -44,9 +44,9 @@ launched with the support of Scott Williams and Human Design, Fueled's partners 
 
 * [x] Add days_between_first_last to int_customers.sql
 * [x] Add order_frequency to int_customers.sql
-* [ ] Add discount_usage_count to int_customers.sql
-* [ ] Add discount_usage_amount to int_customers.sql
-* [ ] Add most recent billing & shipping address information to int_customers.sql
+* [x] Add discount_usage_count to int_customers.sql
+* [x] Add discount_usage_amount to int_customers.sql
+* [x] Add most recent billing address information to int_customers.sql
 
 #### Order Flattening & Rollups
 
